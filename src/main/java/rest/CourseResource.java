@@ -51,4 +51,11 @@ public class CourseResource {
     public String getCourses() {
     return GSON.toJson(cf.getAllCourses());
     }
+     @Path("getallclasses")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getClasses() {
+    return GSON.toJson(cf.getAllCourses());
+    }
+    
 }

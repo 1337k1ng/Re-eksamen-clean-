@@ -25,7 +25,7 @@ public class ClassesDTO {
 
     }
 
-    public List<ClasssDTO> getAllClasses() {
+    public List<ClasssDTO> getAll() {
         return allClasses;
     }
 

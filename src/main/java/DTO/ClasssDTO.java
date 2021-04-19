@@ -21,21 +21,7 @@ public class ClasssDTO {
         this.numberOfStudents = classs.getNumberOfStudents();
     }
 
-    public String getSemester() {
-        return semester;
-    }
-
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
-
-    public int getNumberOfStudents() {
-        return numberOfStudents;
-    }
-
-    public void setNumberOfStudents(int numberOfStudents) {
-        this.numberOfStudents = numberOfStudents;
-    }
+   
 
     
     

@@ -5,6 +5,8 @@
  */
 package facades;
 
+import dto.ClassesDTO;
+import dto.ClasssDTO;
 import dto.CourseDTO;
 import dto.CoursesDTO;
 import entities.Classs;
@@ -44,7 +46,16 @@ public class CourseFacade {
         return new CoursesDTO(courseList).getAll();
 
     }
+    
+   /* public List<ClasssDTO> getAllClasses() {
 
+        EntityManager em = emf.createEntityManager();
+        List<Classs> classsList = em.createQuery("SELECT c FROM Classs c", Classs.class).getResultList();
+
+        return new ClassesDTO(classsList).getAll();
+
+    }
+*/
     public Course addNewCourse(Course newCourse) throws AuthenticationException {
 
         if (newCourse.getCourseName().isEmpty() || newCourse.getDescription().isEmpty()) {

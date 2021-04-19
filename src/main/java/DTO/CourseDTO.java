@@ -3,10 +3,7 @@ package dto;
 import entities.Course;
 
 
-/**
- *
- * @author Yones
- */
+
 public class CourseDTO {
 
     private String courseName;
@@ -17,6 +14,22 @@ public class CourseDTO {
     public CourseDTO(Course course) {
         this.courseName = course.getCourseName();
         this.description = course.getDescription();
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
  
