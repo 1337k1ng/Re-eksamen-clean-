@@ -110,7 +110,15 @@ public class RenameMeResourceTest {
                 .extract().path("token");
         //System.out.println("TOKEN ---> " + securityToken);
     }
-    
+    @Test
+    public void getAllCourseTest() {
+        given()
+                .contentType("application/json")
+                .when()
+                .get("/course/getallcourses").then()
+                .statusCode(200);
+
+    }
     
     @Test
     public void testServerIsUp() {
@@ -126,7 +134,24 @@ public class RenameMeResourceTest {
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello anonymous"));
-    }   
-   
+    }  
+     @Test
+    public void testGetAllCourses() throws Exception {
+        given()
+                .contentType("application/json")
+                .get("/course/getallcourses").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("courseName[1]", equalTo("Programmering 1"));
+    }
+   @Test
+    public void testAllUsers() throws Exception {
+        given()
+                .contentType("application/json")
+                .get("/info/all").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("user_name[0]", equalTo("Admin"));
+    }
 
 }
