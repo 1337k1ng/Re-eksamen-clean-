@@ -45,7 +45,7 @@ public class CourseResource {
         return "{\"msg\": \"Course added  \"}";
     }
     
- @Path("getallcourses")
+    @Path("getallcourses")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getCourses() {
