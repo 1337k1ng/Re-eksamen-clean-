@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/1337k1ng/Re-eksamen-clean-.svg?branch=main)](https://travis-ci.org/1337k1ng/Re-eksamen-clean-)
+[![Build Status](https://travis-ci.com/1337k1ng/Re-eksamen-clean-.svg?branch=main)](https://travis-ci.com/1337k1ng/Re-eksamen-clean-)
 
 ### Preconditions
 *In order to use this code, you should have a local developer setup + a "matching" droplet on Digital Ocean as described in the 3. semester guidelines.* 
