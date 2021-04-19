@@ -6,10 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
@@ -26,6 +31,10 @@ public class Classs implements Serializable {
     private String semester; 
     private int numberOfStudents;
 
+    @ManyToMany (mappedBy= "classsList", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+     
+    private List<Teacher> teacherList = new ArrayList<>();
+    
     @ManyToOne
     private Course course;
     
@@ -59,6 +68,23 @@ public class Classs implements Serializable {
 
     public void setNumberOfStudents(int numberOfStudents) {
         this.numberOfStudents = numberOfStudents;
+    }
+
+    public List<Teacher> getTeacherList() {
+        return teacherList;
+    }
+
+   public void addTeacher(Teacher teacher) {
+        teacherList.add(teacher);
+        teacher.getClasssList().add(this);
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     

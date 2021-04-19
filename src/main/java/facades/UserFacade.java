@@ -1,6 +1,8 @@
 package facades;
 
+import entities.Classs;
 import entities.Role;
+import entities.Teacher;
 import entities.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -46,24 +48,25 @@ public class UserFacade {
     }
 
     public User addNewUser(User newUser) throws AuthenticationException {
-
-        if (newUser.getUserName().isEmpty() || newUser.getUserPass().isEmpty()) {
-            throw new AuthenticationException("User name or password must not be empty");
+       
+        if (newUser.getUserName().isEmpty() || newUser.getUserPass().isEmpty()  ) {
+            throw new AuthenticationException("User name, password or role must not be empty");
         }
-
+        
+        Classs classs1 = new Classs("ajodadoj", 32);
+        classs1.addTeacher(new Teacher("JOhnnybravo"));
+        
+        
         EntityManager em = emf.createEntityManager();
+        
+        newUser.addRole(new Role("user"));
 
-        User user = new User("Bruger1", "bruger");
-
-        User user2 = new User("Admin1", "admin");
-        user.addRole(new Role("user"));
-        user2.addRole(new Role("admin"));
         try {
             em.getTransaction().begin();
-            em.persist(new Role("user"));
-            em.persist(new Role("admin"));
-            em.persist(user);
-            em.persist(user2);
+            em.persist(classs1);
+           
+            em.persist(newUser);
+
             em.getTransaction().commit();
 
         } catch (RollbackException e) {
@@ -74,7 +77,7 @@ public class UserFacade {
         } finally {
             em.close();
         }
-        return user;
+        return newUser;
 
     }
 }

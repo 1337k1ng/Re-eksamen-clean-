@@ -7,7 +7,9 @@ package facades;
 
 import dto.CourseDTO;
 import dto.CoursesDTO;
+import entities.Classs;
 import entities.Course;
+import entities.Teacher;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,16 +36,14 @@ public class CourseFacade {
         return instance;
     }
 
-     public List<CourseDTO> getAllCourses() {
-    
-    EntityManager em = emf.createEntityManager();
-    List<Course> courseList = em.createQuery("SELECT c FROM Course c", Course.class).getResultList();
-    
-    
-    return new CoursesDTO(courseList).getAll();
-    
-     }
-   
+    public List<CourseDTO> getAllCourses() {
+
+        EntityManager em = emf.createEntityManager();
+        List<Course> courseList = em.createQuery("SELECT c FROM Course c", Course.class).getResultList();
+
+        return new CoursesDTO(courseList).getAll();
+
+    }
 
     public Course addNewCourse(Course newCourse) throws AuthenticationException {
 
@@ -55,7 +55,9 @@ public class CourseFacade {
         Course course = new Course(newCourse.getCourseName(), newCourse.getDescription());
 
         try {
+
             em.getTransaction().begin();
+
             em.persist(course);
             em.getTransaction().commit();
 
