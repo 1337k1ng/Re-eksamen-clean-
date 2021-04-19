@@ -47,14 +47,15 @@ public class TestUser {
         Role userRole = new Role("user");
      //   Role teacherRole = new Role("teacher");
        
-       // user1.addRole(adminRole);
-       // user2.addRole(userRole);
-        
+        user1.addRole(adminRole);
+        user2.addRole(userRole);
+        System.out.println(user1);
+        System.out.println(user2);
         em.getTransaction().begin();
-        //em.persist(userRole);
-        // em.persist(adminRole);
+        em.persist(userRole);
+        em.persist(adminRole);
         //em.persist(teacherRole);
-         em.persist(user1);
+        em.persist(user1);
         em.persist(user2);
         em.getTransaction().commit();
         em.close();
