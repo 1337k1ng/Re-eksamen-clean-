@@ -39,7 +39,7 @@ public class TestUser {
         em.getTransaction().commit();
         em.close(); 
         */
-        //
+        ///
         
         User user1 = new User("Admin", "test1");
         User user2 = new User("Student", "test1");
